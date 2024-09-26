@@ -85,6 +85,8 @@ class _ExpansionPanelItemState extends State<ExpansionPanelItem> {
                               }
 
                               widget.panelItem.todos.remove(todo);
+                              model.updatePanelItem(
+                                  widget.panelItem.id, widget.panelItem);
                               setState(() {});
                             });
                           },
