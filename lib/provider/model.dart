@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/panel_item.dart';
 import 'package:todo_app/tools/generate_id.dart';
-import 'package:todo_app/widgets/expansion_panel_item.dart';
 
 import '../models/todo.dart';
 import '../services/hive_services.dart';
@@ -43,10 +42,10 @@ class Model extends ChangeNotifier {
     notifyListeners();
   }
 
-  void removePanelItem(ExpansionPanelItem e) {
-    services.deleteData(e.panelItem.id);
+  void removePanelItem(String id) {
+    services.deleteData(id);
 
-    _panelItems.remove(e.panelItem.id);
+    _panelItems.remove(id);
     notifyListeners();
   }
 }

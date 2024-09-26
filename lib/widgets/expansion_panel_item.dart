@@ -81,13 +81,15 @@ class _ExpansionPanelItemState extends State<ExpansionPanelItem> {
                           onDelete: () {
                             delete(context, () {
                               if (widget.panelItem.todos.length == 1) {
-                                model.removePanelItem(widget);
+                                model.removePanelItem(widget.panelItem.id);
+                                widget.panelItem.todos.remove(todo);
+                                setState(() {});
+                              } else {
+                                widget.panelItem.todos.remove(todo);
+                                setState(() {});
+                                model.updatePanelItem(
+                                    widget.panelItem.id, widget.panelItem);
                               }
-
-                              widget.panelItem.todos.remove(todo);
-                              model.updatePanelItem(
-                                  widget.panelItem.id, widget.panelItem);
-                              setState(() {});
                             });
                           },
                         );
